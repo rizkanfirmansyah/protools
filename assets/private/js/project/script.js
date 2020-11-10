@@ -124,10 +124,6 @@ function start_projectList(type = 2, text = 'public', idt = null) {
      })
  }
 
- function show_error(err){
-    return alert(`${err.status} ${err.statusText}`)
- }
-
  function start_rules(idp){
      let rules = ''
      $.ajax({
@@ -160,16 +156,6 @@ function start_projectList(type = 2, text = 'public', idt = null) {
             show_error(err)
          }
      })
- }
-
- function eventMod(parent, child, even){
-    $(`#${parent}`).on(even, `#${child}`, function(){
-        if($(this).attr('disabled')){
-            alert('Save project and try again')
-        }else{
-            // console.log('ohh oke');
-        }
-    })
  }
 
  function participant_project(idp){

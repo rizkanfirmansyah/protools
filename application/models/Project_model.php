@@ -20,15 +20,11 @@ class Project_model extends CI_Model
     return 0;
   }
 
-  public function getDetail($title = null, $idp = null)
+  public function getDetail($idp = null)
   {
-    if ($title != null && $idp != null) {
+    if ($idp != null) {
       $result = $this->db->get_where('project', ['id' => $idp])->row();
-      if ($result->title == $title) {
-        return $result;
-      } else {
-        return 0;
-      }
+      return $result;
     } else {
       return 0;
     }

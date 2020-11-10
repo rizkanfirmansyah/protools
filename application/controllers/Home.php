@@ -20,12 +20,20 @@ class Home extends CI_Controller
   {
     $title = $_GET['title'];
     $idp = $_GET['idp'];
-    $data = [
-      'project' => $this->project->getDetail($title, $idp),
-      'key' => $this->project->getKey($idp),
-      'rules' => $this->project->getRules($idp),
-    ];
-    $this->load->view('template/layout', $data);
+    if (!empty($idp)) {
+      $data = [
+        'project' => $this->project->getDetail($idp),
+        'key' => $this->project->getKey($idp),
+        'rules' => $this->project->getRules($idp),
+      ];
+      if ($data['project'] == null) {
+        redirect('id/project');
+      } else {
+        $this->load->view('template/layout', $data);
+      }
+    } else {
+      redirect('id/project');
+    }
   }
 }
 

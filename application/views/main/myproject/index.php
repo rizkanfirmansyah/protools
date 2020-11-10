@@ -9,8 +9,8 @@
                     <ol class="breadcrumb ml-auto">
                         <li><a href="#">Dashboard</a></li>
                     </ol>
-                    <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                        to Pro</a>
+                    <!-- <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-danger  d-none d-md-block pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
+                        to Pro</a> -->
                 </div>
             </div>
         </div>

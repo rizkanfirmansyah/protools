@@ -25,8 +25,24 @@ class Process extends CI_Controller
       'user_id' => htmlspecialchars('rizkan'),
     ];
 
-    $this->db->insert('access_project', $data);
-    echo json_encode('SUKSES');
+    $res = $this->db->get_where('access_project', $data)->row();
+
+    if ($res) {
+      echo json_encode([
+        'title' => 'Error',
+        'subtitle' => 'User Has already in this Project',
+        'expression' => 'warning',
+        'id' => $data['project_id'],
+      ]);
+    } else {
+      $this->db->insert('access_project', $data);
+      echo json_encode([
+        'title' => 'Success',
+        'subtitle' => 'User Has been Join in this Project',
+        'expression' => 'success',
+        'id' => $data['project_id'],
+      ]);
+    }
   }
 
   public function insert_project()
@@ -50,6 +66,19 @@ class Process extends CI_Controller
   {
     $this->db->empty_table($table);
     redirect('id/project');
+  }
+
+  public function delete_project()
+  {
+    $id = $this->input->post('id');
+    $table = [
+      'project' => 'id',
+      'access_project' => 'project_id',
+      'rules' => 'project_id',
+    ];
+    foreach ($table as $tb => $value) {
+      $this->db->delete($tb, [$value => $id]);
+    }
   }
 }
 

@@ -1,3 +1,4 @@
+<span id="idProjectGoal" data-id="<?= $project->id ?>"></span>
 <div class="page-wrapper" style="display: block;">
     <div class="page-breadcrumb bg-white">
         <div class="row align-items-center">
@@ -21,15 +22,15 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col text-left">
-                                <h2 class="card-title"><?= $project->client_company ?> <?= check_type($project->type) ?></h2>
+                                <h2 class="card-title"><?= $project->title ?> <?= check_type($project->type) ?></h2>
                                 <h6 class="card-subtitle"><?= date('d-M-Y', strtotime($project->deadline)) ?></h6>
                             </div>
                             <div class="col text-right">
-                                <h3><?= $project->title ?></h3>
+                                <h3><?= $project->client_company ?></h3>
                                 <button onclick="joinProject('<?= $project->id ?>', 'participant')" class="btn btn-info btn-rounded btn-sm mr-1" data-toggle="tooltip" title="" data-original-title="Join to project <?= $project->title ?>"> Join <i class="fas fa-user"></i></button>
                                 <button onclick="joinProject('<?= $project->id ?>', 'pic')" class="btn btn-primary btn-rounded btn-sm" data-toggle="tooltip" title="" data-original-title="Join to project <?= $project->title ?> as PIC"> Join as PIC <i class="fas fa-user-check"></i></button>
                                 <button onclick="editProject('<?= $project->id ?>')" class="btn btn-warning btn-rounded btn-sm"> Edit <i class="fas fa-edit"></i></button>
-                                <button onclick="" class="btn btn-danger btn-rounded btn-sm"> Delete <i class="fas fa-trash"></i></button>
+                                <button onclick="deleteProject('<?= $project->id ?>')" class="btn btn-danger btn-rounded btn-sm"> Delete <i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                         <div class="row">
@@ -51,7 +52,9 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <h3 class="box-title mt-2">Team mate</h3>
-                                        <span class="text-muted">Team Not Found </span>
+                                        <div id="cardParticipant">
+                                            <span class="text-muted">Team Not Found </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +91,7 @@
                                 <h3 class="box-title mt-5">Rules</h3>
                                 <?php if ($project->rules == 1) : ?>
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table" id="TableRules">
                                             <tbody>
                                                 <?php foreach ($rules as $r) : ?>
                                                     <tr>
@@ -109,3 +112,4 @@
             </div>
         </div>
     </div>
+    <?php $this->load->view('main/detail/additional/modal'); ?>

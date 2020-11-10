@@ -25,6 +25,7 @@ $route['api/getparticipant'] = 'api/participant';
 // process
 $route['join/project'] = 'process/join_project';
 $route['project/insert'] = 'process/insert_project';
+$route['project/delete'] = 'process/delete_project';
 $route['participant/insert'] = 'process/insert_participant';
 $route['rule/insert'] = 'process/insert_rule';
 
